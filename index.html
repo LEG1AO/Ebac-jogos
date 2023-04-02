@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ebac Jogos</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <h1 class="main-title">EBAC JOGOS</h1>
+    
+	<header>
+		<nav>
+			<ul>
+				<li><a href="#">Início</a></li>
+				<li><a href="#">Jogos de Ação</a></li>
+				<li><a href="#">Jogos de Estratégia</a></li>
+				<li><a href="#">Jogos de Aventura</a></li>
+			</ul>
+		</nav>
+        <div class="cart-container">
+            <h2><span class="cart-icon">🛒</span> Carrinho de Compras</h2>
+            <div class="cart-items"></div>
+            <div class="cart-footer">
+                <p>Total: R$ 0,00</p>
+            </div>
+        </div>
+        
+        </div>
+        
+        
+        
+    
+        
+	</header>
+
+	<main>
+
+		<section class="about">
+			<div class="about-image">
+				<img src="images/logo.png" alt="Logotipo da loja">
+			</div>
+			<div class="about-text">
+				<h2>Sobre a Loja</h2>
+				<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit at incidunt ex minima consequuntur sequi, doloribus officiis adipisci placeat. Fugiat nam maiores dolor libero asperiores laudantium. Officiis aperiam quae sunt!
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum laborum qui dicta laudantium delectus eos error? Enim sunt atque, consectetur modi doloribus, illum omnis unde dolores officiis earum, aperiam vel..</p>
+			</div>
+		</section>
+
+		<section class="products">
+            <h2>Produtos em Destaque</h2>
+            <ul class="featured-products">
+                <li>
+                    <div class="product-image">
+                        <img src="images/jogo1.png.jpg" alt="Imagem do Jogo 1">
+                    </div>
+                    <div class="product-details">
+                        <h3>Hogwards Legacy</h3>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem minima.</p>
+                        <p class="price">R$ 230,99</p>
+                        <button id="add-to-cart-1">Adicionar ao Carrinho</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-image">
+                        <img src="images/jogo2.png.jpg" alt="Imagem do Jogo 2">
+                    </div>
+                    <div class="product-details">
+                        <h3>Diablo IV</h3>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem minima.</p>
+                        <p class="price">R$ 470,00</p>
+                        <button id="add-to-cart-2">Adicionar ao Carrinho</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-image">
+                        <img src="images/jogo3.png.jpg" alt="Imagem do Jogo 3">
+                    </div>
+                    <div class="product-details">
+                        <h3>Jedi Survivior</h3>
+                        <p><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem minima.</p>.</p>
+                        <p class="price">R$ 249,99</p>
+                        <button id="add-to-cart-3">Adicionar ao Carrinho</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-image">
+                        <img src="images/jogo4.jpg" alt="Imagem do Jogo 4">
+                    </div>
+                    <div class="product-details">
+                        <h3>Resident Evil 4</h3>
+                        <p><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem minima.</p>.</p>
+                        <p class="price">R$ 120,60</p>
+                        <button id="add-to-cart-4">Adicionar ao Carrinho</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        
+                
+                    <script>
+                        // Produto N
+const addToCartButtonN = document.getElementById("add-to-cart-1");
+addToCartButtonN.addEventListener("click", () => {
+  const cartItems = document.querySelector(".cart-items");
+  const productItem = addToCartButtonN.closest(".product-details");
+  const productName = productItem.querySelector("h3").textContent;
+  const productPrice = productItem.querySelector(".price").textContent;
+  const cartItem = document.createElement("div");
+  cartItem.classList.add("cart-item");
+  cartItem.innerHTML = `
+    <p>${productName}</p>
+    <p>${productPrice}</p>
+  `;
+  cartItems.appendChild(cartItem);
+  const totalPrice = document.querySelector(".cart-footer p");
+  const currentPrice = parseFloat(totalPrice.textContent.replace("Total: R$ ", ""));
+  const newPrice = currentPrice + parseFloat(productPrice.replace("R$ ", ""));
+  totalPrice.textContent = `Total: R$ ${newPrice.toFixed(2)}`;
+});
+const addToCartButtonN2 = document.getElementById("add-to-cart-2");
+addToCartButtonN2.addEventListener("click", () => {
+  const cartItems = document.querySelector(".cart-items");
+  const productItem = addToCartButtonN2.closest(".product-details");
+  const productName = productItem.querySelector("h3").textContent;
+  const productPrice = productItem.querySelector(".price").textContent;
+  const cartItem = document.createElement("div");
+  cartItem.classList.add("cart-item");
+  cartItem.innerHTML = `
+    <p>${productName}</p>
+    <p>${productPrice}</p>
+  `;
+  cartItems.appendChild(cartItem);
+  const totalPrice = document.querySelector(".cart-footer p");
+  const currentPrice = parseFloat(totalPrice.textContent.replace("Total: R$ ", ""));
+  const newPrice = currentPrice + parseFloat(productPrice.replace("R$ ", ""));
+  totalPrice.textContent = `Total: R$ ${newPrice.toFixed(2)}`;
+});
+const addToCartButtonN3 = document.getElementById("add-to-cart-3");
+addToCartButtonN3.addEventListener("click", () => {
+  const cartItems = document.querySelector(".cart-items");
+  const productItem = addToCartButtonN3.closest(".product-details");
+  const productName = productItem.querySelector("h3").textContent;
+  const productPrice = productItem.querySelector(".price").textContent;
+  const cartItem = document.createElement("div");
+  cartItem.classList.add("cart-item");
+  cartItem.innerHTML = `
+    <p>${productName}</p>
+    <p>${productPrice}</p>
+  `;
+  cartItems.appendChild(cartItem);
+  const totalPrice = document.querySelector(".cart-footer p");
+  const currentPrice = parseFloat(totalPrice.textContent.replace("Total: R$ ", ""));
+  const newPrice = currentPrice + parseFloat(productPrice.replace("R$ ", ""));
+  totalPrice.textContent = `Total: R$ ${newPrice.toFixed(2)}`;
+});
+const addToCartButton4 = document.getElementById("add-to-cart-4");
+addToCartButton4.addEventListener("click", () => {
+  const cartItems = document.querySelector(".cart-items");
+  const productItem = addToCartButton4.closest(".product-details");
+  const productName = productItem.querySelector("h3").textContent;
+  const productPrice = productItem.querySelector(".price").textContent;
+  const cartItem = document.createElement("div");
+  cartItem.classList.add("cart-item");
+  cartItem.innerHTML = `
+    <p>${productName}</p>
+    <p>${productPrice}</p>
+  `;
+  cartItems.appendChild(cartItem);
+  const totalPrice = document.querySelector(".cart-footer p");
+  const currentPrice = parseFloat(totalPrice.textContent.replace("Total: R$ ", ""));
+  const newPrice = currentPrice + parseFloat(productPrice.replace("R$ ", ""));
+  totalPrice.textContent = `Total: R$ ${newPrice.toFixed(2)}`;
+});
+
+
+
+
+
+
+                    </script>
+
+
+
+                    
+                    </body>
+                    
