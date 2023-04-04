@@ -6,7 +6,7 @@
 	<title>Ebac Jogos</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <h1 class="main-title">EBAC JOGOS</h1>
@@ -21,20 +21,19 @@
 			</ul>
 		</nav>
         <div class="cart-container">
-            <h2><span class="cart-icon">🛒</span> Carrinho de Compras</h2>
+            <img src="images/cart.png" alt="logo do carrinho de compras">
             <div class="cart-items"></div>
             <div class="cart-footer">
                 <p>Total: R$ 0,00</p>
             </div>
+            <!-- Adicione um span para envolver o nome do produto e outro para o preço -->
+    <div class='cart-item'>
+    <span class='product-name'></span>
+    <span class='product-price'></span>
+    </div>
+  
         </div>
-        
-        </div>
-        
-        
-        
-    
-        
-	</header>
+    </header>
 
 	<main>
 
@@ -52,135 +51,88 @@
 		<section class="products">
             <h2>Produtos em Destaque</h2>
             <ul class="featured-products">
-                <li>
-                    <div class="product-image">
-                        <img src="images/jogo1.png.jpg" alt="Imagem do Jogo 1">
-                    </div>
-                    <div class="product-details">
-                        <h3>Hogwards Legacy</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem minima.</p>
-                        <p class="price">R$ 230,99</p>
-                        <button id="add-to-cart-1">Adicionar ao Carrinho</button>
-                    </div>
-                </li>
-                <li>
-                    <div class="product-image">
-                        <img src="images/jogo2.png.jpg" alt="Imagem do Jogo 2">
-                    </div>
-                    <div class="product-details">
-                        <h3>Diablo IV</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem minima.</p>
-                        <p class="price">R$ 470,00</p>
-                        <button id="add-to-cart-2">Adicionar ao Carrinho</button>
-                    </div>
-                </li>
-                <li>
-                    <div class="product-image">
-                        <img src="images/jogo3.png.jpg" alt="Imagem do Jogo 3">
-                    </div>
-                    <div class="product-details">
-                        <h3>Jedi Survivior</h3>
-                        <p><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem minima.</p>.</p>
-                        <p class="price">R$ 249,99</p>
-                        <button id="add-to-cart-3">Adicionar ao Carrinho</button>
-                    </div>
-                </li>
-                <li>
-                    <div class="product-image">
-                        <img src="images/jogo4.jpg" alt="Imagem do Jogo 4">
-                    </div>
-                    <div class="product-details">
-                        <h3>Resident Evil 4</h3>
-                        <p><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem minima.</p>.</p>
-                        <p class="price">R$ 120,60</p>
-                        <button id="add-to-cart-4">Adicionar ao Carrinho</button>
-                    </div>
-                </li>
+            <li>
+                <div class="product-image">
+                <img src="images/jogo1.png.jpg" alt="Imagem do Jogo 1">
+                </div>
+                <div class="product-details">
+                <h3>Hogwards Legacy</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem minima.</p>
+                <p class="price">R$ 230,99</p>
+                <button class="add-to-cart-btn" data-product="Hogwards Legacy" data-price="230.99">Adicionar ao Carrinho</button>
+                </div>
+            </li>
+            <li>
+                <div class="product-image">
+                <img src="images/jogo2.png.jpg" alt="Imagem do Jogo 2">
+                </div>
+                <div class="product-details">
+                <h3>Diablo IV</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem minima.</p>
+                <p class="price">R$ 470,00</p>
+                <button class="add-to-cart-btn" data-product="Diablo IV" data-price="470,00">Adicionar ao Carrinho</button>
+                </div>
+            </li>
+            <li>
+                <div class="product-image">
+                <img src="images/jogo3.png.jpg" alt="Imagem do Jogo 3">
+                </div>
+                <div class="product-details">
+                <h3>Jedi Survivor</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem minima.</p>
+                <p class="price">R$ 249,00</p>
+                <button class="add-to-cart-btn" data-product="Jedi Survivor" data-price="249,00">Adicionar ao Carrinho</button>
+                </div>
+            </li>
+            <li>
+                <div class="product-image">
+                <img src="images/jogo4.jpg" alt="Imagem do Jogo 4">
+                </div>
+                <div class="product-details">
+                <h3>Resident Evil 4</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem minima.</p>
+                <p class="price">R$ 120,00</p>
+                <button class="add-to-cart-btn" data-product="Resident Evil 4" data-price="120,00">Adicionar ao Carrinho</button>
+                </div>
+            </li>
             </ul>
         </section>
         
+        <script>
+$(document).ready(function() {
+  // Quando o botão "Adicionar ao Carrinho" é clicado, o produto é adicionado ao carrinho
+  $(".add-to-cart-btn").click(function() {
+    var product = $(this).data("product");
+    var price = $(this).data("price");
+    var cartItems = $(".cart-items").text();
+
+
+    // Cria um novo item de carrinho e adiciona ao HTML
+    var cartItem = $("<div class='cart-item'></div>");
+    // Adicione o nome do produto e preço em elementos separados com a classe CSS correspondente
+    cartItem.find('.product-name').text(product);
+    cartItem.find('.product-price').text("- R$ " + price);
+    cartItems.append(cartItem);
+
+    // Atualiza o total do carrinho
+    var cartTotal = 0;
+    $(".cart-item").each(function() {
+      var itemPrice = $(this).find('.product-price').text().split("R$ ")[1];
+      cartTotal += parseFloat(itemPrice);
+    });
+    $(".cart-footer p").text("Total: R$ " + cartTotal.toFixed(2));
+  });
+});
+
+
+
+
+        
+        </script>
+        
+        
                 
-                    <script>
-                        // Produto N
-const addToCartButtonN = document.getElementById("add-to-cart-1");
-addToCartButtonN.addEventListener("click", () => {
-  const cartItems = document.querySelector(".cart-items");
-  const productItem = addToCartButtonN.closest(".product-details");
-  const productName = productItem.querySelector("h3").textContent;
-  const productPrice = productItem.querySelector(".price").textContent;
-  const cartItem = document.createElement("div");
-  cartItem.classList.add("cart-item");
-  cartItem.innerHTML = `
-    <p>${productName}</p>
-    <p>${productPrice}</p>
-  `;
-  cartItems.appendChild(cartItem);
-  const totalPrice = document.querySelector(".cart-footer p");
-  const currentPrice = parseFloat(totalPrice.textContent.replace("Total: R$ ", ""));
-  const newPrice = currentPrice + parseFloat(productPrice.replace("R$ ", ""));
-  totalPrice.textContent = `Total: R$ ${newPrice.toFixed(2)}`;
-});
-const addToCartButtonN2 = document.getElementById("add-to-cart-2");
-addToCartButtonN2.addEventListener("click", () => {
-  const cartItems = document.querySelector(".cart-items");
-  const productItem = addToCartButtonN2.closest(".product-details");
-  const productName = productItem.querySelector("h3").textContent;
-  const productPrice = productItem.querySelector(".price").textContent;
-  const cartItem = document.createElement("div");
-  cartItem.classList.add("cart-item");
-  cartItem.innerHTML = `
-    <p>${productName}</p>
-    <p>${productPrice}</p>
-  `;
-  cartItems.appendChild(cartItem);
-  const totalPrice = document.querySelector(".cart-footer p");
-  const currentPrice = parseFloat(totalPrice.textContent.replace("Total: R$ ", ""));
-  const newPrice = currentPrice + parseFloat(productPrice.replace("R$ ", ""));
-  totalPrice.textContent = `Total: R$ ${newPrice.toFixed(2)}`;
-});
-const addToCartButtonN3 = document.getElementById("add-to-cart-3");
-addToCartButtonN3.addEventListener("click", () => {
-  const cartItems = document.querySelector(".cart-items");
-  const productItem = addToCartButtonN3.closest(".product-details");
-  const productName = productItem.querySelector("h3").textContent;
-  const productPrice = productItem.querySelector(".price").textContent;
-  const cartItem = document.createElement("div");
-  cartItem.classList.add("cart-item");
-  cartItem.innerHTML = `
-    <p>${productName}</p>
-    <p>${productPrice}</p>
-  `;
-  cartItems.appendChild(cartItem);
-  const totalPrice = document.querySelector(".cart-footer p");
-  const currentPrice = parseFloat(totalPrice.textContent.replace("Total: R$ ", ""));
-  const newPrice = currentPrice + parseFloat(productPrice.replace("R$ ", ""));
-  totalPrice.textContent = `Total: R$ ${newPrice.toFixed(2)}`;
-});
-const addToCartButton4 = document.getElementById("add-to-cart-4");
-addToCartButton4.addEventListener("click", () => {
-  const cartItems = document.querySelector(".cart-items");
-  const productItem = addToCartButton4.closest(".product-details");
-  const productName = productItem.querySelector("h3").textContent;
-  const productPrice = productItem.querySelector(".price").textContent;
-  const cartItem = document.createElement("div");
-  cartItem.classList.add("cart-item");
-  cartItem.innerHTML = `
-    <p>${productName}</p>
-    <p>${productPrice}</p>
-  `;
-  cartItems.appendChild(cartItem);
-  const totalPrice = document.querySelector(".cart-footer p");
-  const currentPrice = parseFloat(totalPrice.textContent.replace("Total: R$ ", ""));
-  const newPrice = currentPrice + parseFloat(productPrice.replace("R$ ", ""));
-  totalPrice.textContent = `Total: R$ ${newPrice.toFixed(2)}`;
-});
-
-
-
-
-
-
-                    </script>
+                    
 
 
 
